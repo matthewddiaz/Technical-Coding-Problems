@@ -1,0 +1,9 @@
+#OSX files
+.DS_Store
+
+#Intellij files
+.idea
+*.iml
+
+# .class folder
+/out
