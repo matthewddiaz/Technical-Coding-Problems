@@ -14,12 +14,13 @@ class MthElementToLastTest {
     @Test
     void mthElementToLast() {
         LinkedList.Node head = Utils.getHeadOfComplexLinkedList();
+        String expectedCharacter1 = "Trunks";
+        String expectedCharacter2 = "Krillin";
 
-        String character = (String)MthElementToLast.mthElementToLast(head, 3);
-        String character1 = (String)MthElementToLast.mthElementToLast(head, 0);
-        System.out.println(character);
-        System.out.println(character1);
-        System.out.println(LinkedList.toString(head));
+        String actualCharacter1 = (String)MthElementToLast.mthElementToLast(head, 3);
+        String actualCharacter2 = (String)MthElementToLast.mthElementToLast(head, 0);
+
+        assertEquals(expectedCharacter1, actualCharacter1);
+        assertEquals(expectedCharacter2, actualCharacter2);
     }
-
 }
