@@ -6,8 +6,6 @@ package arrayProblems;
 public class ModifyArrayOrder {
 
     /**
-     * Question 2: Given at Microsoft Final Interview
-     *
      * This method converts the array of the form
      * input: [a1,a2,a3,b1,b2,b3]
      *

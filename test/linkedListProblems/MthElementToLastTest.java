@@ -1,7 +1,8 @@
 package linkedListProblems;
 
-import com.matthewddiaz.datastructures.linkedList.LinkedList;
-import com.matthewddiaz.datastructures.linkedList.Utils;
+
+import com.matthewddiaz.datastructures.lists.LinkedList;
+import com.matthewddiaz.datastructures.lists.linkedList.LinkedListFactory;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,7 +14,7 @@ class MthElementToLastTest {
 
     @Test
     void mthElementToLast() {
-        LinkedList.Node head = Utils.getHeadOfComplexLinkedList();
+        LinkedList.Node head = LinkedListFactory.getHeadOfComplexLinkedList();
         String expectedCharacter1 = "Trunks";
         String expectedCharacter2 = "Krillin";
 

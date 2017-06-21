@@ -1,7 +1,8 @@
 package linkedListProblems;
 
-import com.matthewddiaz.datastructures.linkedList.LinkedList;
-import com.matthewddiaz.datastructures.linkedList.Utils;
+
+import com.matthewddiaz.datastructures.lists.LinkedList;
+import com.matthewddiaz.datastructures.lists.linkedList.LinkedListFactory;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -13,7 +14,7 @@ public class ReverseLinkedListTest {
 
     @Test
     public void reverseLinkedList() throws Exception {
-        LinkedList complexLinkedList = Utils.createComplexLinkedList();
+        LinkedList complexLinkedList = LinkedListFactory.createComplexLinkedList();
 
         //reversing list
         LinkedList.Node reverseLinkedList = ReverseLinkedList.reverseLinkedList(complexLinkedList.getHead());

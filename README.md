@@ -2,7 +2,7 @@
 
 Repository for classic technical coding problems in computer science.
 
-## Data Structure Sections
+## Technical Topic Sections
 
 ### [Array Problems](https://github.com/matthewddiaz/Technical-Coding-Problems/tree/master/src.com.matthewddiaz.technical_coding_problems/arrayProblems)
 

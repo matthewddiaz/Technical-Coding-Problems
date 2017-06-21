@@ -42,7 +42,12 @@ public class StringUniqueness {
         return true;
     }
 
-    //returns true if the input String has all unique characters. Using no additional data structures
+    /**
+     * returns true if the input String has all unique characters. Using no additional data structures
+     * Relies on sorting the array and then comparing adjacent indexes
+     * @param str
+     * @return
+     */
     public static boolean isStringUniqueNoDataStructure(String str){
         //ascii has 128 characters therefore if input string length is greater than 128 return false.
         if(str.length() > 128){

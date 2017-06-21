@@ -1,6 +1,7 @@
 package linkedListProblems;
 
-import com.matthewddiaz.datastructures.linkedList.LinkedList;
+
+import com.matthewddiaz.datastructures.lists.LinkedList;
 
 /**
  * Created by matthewdiaz on 6/4/17.
