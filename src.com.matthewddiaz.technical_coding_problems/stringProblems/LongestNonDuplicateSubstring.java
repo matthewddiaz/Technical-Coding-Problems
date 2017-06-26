@@ -1,47 +1,61 @@
 package stringProblems;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by matthewdiaz on 10/23/16.
  */
 public class LongestNonDuplicateSubstring {
-    public static int lengthOfLongestSubstring(String s) {
-        if(s.length() == 0){
+
+    /**
+     * Given an input String return the length of the longest non-duplicate substring
+     *
+     * Ex:
+     * input: "abcabcbb"
+     * output: 3 => "abc" is one of the longest non-duplicate substrings
+     *
+     * input: "abbacdhefghcas"
+     * output: 8 => "bacdhefg" is the longest non-duplicate substring
+     *
+     * @param inputStr
+     * @return
+     */
+    public static int lengthOfLongestSubstring(String inputStr) {
+        //return 0 if inputString is empty or null
+        if(inputStr == null || inputStr.equals("")){
             return 0;
         }
 
-        char[] arr = s.toCharArray();
+        //map contains the relation between character and its last appearance index
+        Map<Character, Integer> indexOfCharMap = new HashMap<>();
+        int maxLength = 0;
+        int startOfSubStringIndex = 0;
 
-        int[] letterAppearance = new int[26];
-        int[] currentSubstringLength = new int[arr.length];
-
-        for(int i = 0; i < letterAppearance.length; i++){
-            letterAppearance[i] = -1;
-        }
-
-        currentSubstringLength[0] = 1;
-        letterAppearance[arr[0] - 97] = 0;
-
-        //int startOfSequence = 0;
-        for(int i = 1; i < arr.length; i++){
-            char letter = arr[i];
-            int offset = letter - 97;
-            if(letterAppearance[offset] == -1){
-                currentSubstringLength[i] = currentSubstringLength[i - 1] + 1;
-            }else{
-                currentSubstringLength[i] = i - letterAppearance[offset];
-               // startOfSequence += 1;
+        for(int index = 0; index < inputStr.length(); index++){
+            char currentChar = inputStr.charAt(index);
+            //if currentChar is a duplicate; compare its last occurrence index vs the start of substring index
+            //if the last occurrence index happened after the start of substring; change the start of the substring
+            if(indexOfCharMap.containsKey(currentChar)){
+                startOfSubStringIndex = max(startOfSubStringIndex, indexOfCharMap.get(currentChar) + 1);
             }
-            letterAppearance[offset] = i;
+
+            indexOfCharMap.put(currentChar, index);
+            //current substring length is the interval between the current index and the start of the substring
+            int currentSubStringLength = (index - startOfSubStringIndex) + 1;
+            maxLength = max(maxLength, currentSubStringLength);
         }
 
-        int max = currentSubstringLength[0];
+        return maxLength;
+    }
 
-        for(int i = 1; i < currentSubstringLength.length; i++){
-            System.out.println(currentSubstringLength[i] + " ");
-            if(currentSubstringLength[i] > max){
-                max = currentSubstringLength[i];
-            }
-        }
-        return max;
+    /**
+     * Returns max value of the to input values
+     * @param value1
+     * @param value2
+     * @return
+     */
+    private static int max(int value1, int value2){
+        return (value1 > value2) ? value1 : value2;
     }
 }
