@@ -1,6 +1,7 @@
 package arrayProblems;
 
 import arrayProblems.CircularArrayRotation;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
@@ -8,18 +9,11 @@ import java.util.Arrays;
  * Created by matthewdiaz on 8/25/16.
  */
 public class CircularArrayRotationTest {
-    private CircularArrayRotation circularArrayRotation;
+    private Integer[] sampleArr = {8, 1, 15, 20, 7, 1, 2};
 
-    @org.junit.Before
-    public void setUp() throws Exception {
-        circularArrayRotation = new CircularArrayRotation();
-    }
-
-    @org.junit.Test
-    public void testShiftAllElementsClockWise() throws Exception {
-        Integer[] arr = {1,2,3,4,5};
-
-        circularArrayRotation.shiftAllElementsClockWise(arr);
-        System.out.println(Arrays.toString(arr));
+    @Test
+    void shiftAllElementsClockWise() {
+        CircularArrayRotation.shiftAllElementsClockWise(sampleArr, 3);
+        System.out.println(Arrays.toString(sampleArr));
     }
 }
