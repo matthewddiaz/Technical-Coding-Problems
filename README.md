@@ -10,6 +10,7 @@ Repository for classic technical coding problems in computer science.
 
 ### [String Problems](https://github.com/matthewddiaz/Technical-Coding-Problems/tree/master/src.com.matthewddiaz.technical_coding_problems/stringProblems)
 
+### [Tree Problems](https://github.com/matthewddiaz/Technical-Coding-Problems/tree/master/src.com.matthewddiaz.technical_coding_problems/treeProblems)
 
 ## References and Sources
 1. [Cracking the Coding Interview by Gayle McDowell](https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/098478280X)

@@ -11,7 +11,7 @@ public class MatrixTraversals {
      * Ex: row 0: [ , , , ]
      * @param arr
      */
-    public static void traverseRows(int[][] arr){
+    public static String traverseRows(int[][] arr){
         StringBuffer buffer = new StringBuffer();
         for(int rowIndex = 0; rowIndex < arr.length; rowIndex++){
             buffer.append("row " + rowIndex + ": [ ");
@@ -25,41 +25,53 @@ public class MatrixTraversals {
             }
             buffer.append(" ]\n");
         }
-        System.out.println(buffer.toString());
+        return buffer.toString();
     }
 
     /**
      * Traverses a 2D array. Each row is printed in a new line.
      * @param arr
      */
-    public static void simplifiedRows(int[][] arr){
+    public static String simplifiedRows(int[][] arr){
+        StringBuffer buffer = new StringBuffer();
         for(int[] row : arr){
             for(int element : row){
-                System.out.print(element + " ");
+                buffer.append(element + " ");
             }
-            System.out.println();
+            buffer.append("\n");
         }
+        return buffer.toString();
     }
 
     /**
-     * Prints the elements in the downward diagonal of a (N x N) 2D array
+     * Returns a string of the elements in the downward diagonal of a (N x N) 2D array
+     * Starts from top-right corner and ends at bottom-left corner
      * NOTE: The array should have the same number of rows as cols
      * @param arr
+     * @return
      */
-    public static void PrintDownwardDiagonal(int[][] arr){
-        for(int index = 0; index < arr.length; index++){
-            System.out.println(arr[index][index]);
+    public static String downwardDiagonalString(int[][] arr){
+        StringBuffer buffer = new StringBuffer("[ "+ arr[0][0]);
+        for(int index = 1; index < arr.length; index++){
+            buffer.append(", " + arr[index][index]);
         }
+        buffer.append(" ]");
+        return buffer.toString();
     }
 
     /**
-     * Prints the elements in the upward diagonal of a (N x N) 2D array
+     * Returns a string of the elements in the upward diagonal of a (N x N) 2D array
+     * Starts from bottom-left corner and end at top-right corner
      * NOTE: The array should have the same number of rows as cols
      * @param arr
      */
-    public static void PrintUpwardDiagonal(int[][] arr){
-        for(int index = 0; index < arr.length; index++){
-            System.out.println(arr[arr.length - index][index]);
+    public static String upwardDiagonalString(int[][] arr){
+        int lastIndex = arr.length - 1;
+        StringBuffer buffer = new StringBuffer("[ " + arr[lastIndex][0]);
+        for(int index = 1; index <= lastIndex; index++){
+            buffer.append(", " + arr[lastIndex - index][index]);
         }
+        buffer.append(" ]");
+        return buffer.toString();
     }
 }
