@@ -10,7 +10,7 @@ public class ReverseLinkedList {
 
     //Given the head pointer of a linked list.
     //Returns the head pointer of the same linked list now in reverse order.
-    //NOTE: This implementation creates now new Nodes or linked lists
+    //NOTE: This implementation creates no new linked lists or external data structure
     public static LinkedList.Node reverseLinkedList(LinkedList.Node head){
         LinkedList.Node currentPtr = head;
         LinkedList.Node previousPtr = null; //pointer points to previous node of linked list (One node behind current)

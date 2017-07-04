@@ -12,6 +12,7 @@ class RemoveDuplicatesTest {
 
     @Test
     void removeDuplicatesFromLinkedList() {
+        String expectedResult = "[ 3, 15, 1, 4 ]";
         LinkedList<Integer> linkedList = new LinkedList();
         linkedList.appendElement(new Integer(3));
         linkedList.appendElement(new Integer(15));
@@ -24,7 +25,8 @@ class RemoveDuplicatesTest {
         LinkedList.Node head = linkedList.getHead();
 
         RemoveDuplicates.removeDuplicatesFromLinkedList(head);
-        System.out.println(LinkedList.toString(head));
+        String actualResult = LinkedList.toString(head);
+        assertEquals(expectedResult, actualResult);
     }
 
 }
