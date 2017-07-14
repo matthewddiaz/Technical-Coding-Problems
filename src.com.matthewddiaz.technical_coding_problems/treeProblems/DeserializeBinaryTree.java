@@ -17,7 +17,7 @@ public class DeserializeBinaryTree {
      */
     public static BinaryTree.Node deserialize(String serializedBT){
         Deque<String> tokenQueue = parseSerializedString(serializedBT, ',');
-        return deserialize(tokenQueue);
+        return deserialize(tokenQueue, "#");
     }
 
     /**
@@ -58,7 +58,7 @@ public class DeserializeBinaryTree {
      * @param tokenQueue
      * @return Root of generated binary tree
      */
-    private static BinaryTree.Node deserialize(Deque<String> tokenQueue){
+    public static BinaryTree.Node deserialize(Deque<String> tokenQueue, String nullToken){
         //base case. Return null if queue is equal to null or if there aren't any more tokens in the queue
         if((tokenQueue == null) || tokenQueue.isEmpty()){
             return null;
@@ -67,16 +67,16 @@ public class DeserializeBinaryTree {
         //remove top token from queue
         String currentToken = tokenQueue.remove();
         //a token with value "#" represents a null node
-        if (currentToken.equals("#")){
+        if (currentToken.equals(nullToken)){
             return null;
         }
 
         //creating a new Node with it's key value set to the currentToken
         BinaryTree.Node node = new BinaryTree.Node(Integer.parseInt(currentToken));
         //generate this node's left subtree
-        node.setLeftChild(deserialize(tokenQueue));
+        node.setLeftChild(deserialize(tokenQueue, nullToken));
         //generate this node's right subtree
-        node.setRightChild(deserialize(tokenQueue));
+        node.setRightChild(deserialize(tokenQueue, nullToken));
         return node;
     }
 }

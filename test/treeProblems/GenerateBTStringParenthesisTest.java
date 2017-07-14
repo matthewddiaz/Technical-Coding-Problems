@@ -24,14 +24,14 @@ class GenerateBTStringParenthesisTest {
     @Test
     void generatePreOrderStringParenthesizationForSimpleBST() {
         String expectedSimpleResult = "(10(5(1()())())(12(11()())(15()())))";
-        String simpleBSTStringRep = GenerateBTStringParenthesis.generatePreOrderStringParenthesization(this.simpleBST.getRoot());
+        String simpleBSTStringRep = BTSerializationToStringParenthesis.generatePreOrderStringParenthesization(this.simpleBST.getRoot());
         assertEquals(expectedSimpleResult, simpleBSTStringRep);
     }
 
     @Test
     void generatePreOrderStringParenthesizationForComplexBST() {
         String expectedComplexResult = "(9(5(1()())(8()()))(15(11(10()())())(20(16()(18()()))(50()(60(55()())(100(90(80()())())()))))))";
-        String complexBSTStrRep = GenerateBTStringParenthesis.generatePreOrderStringParenthesization(this.complexBST.getRoot());
+        String complexBSTStrRep = BTSerializationToStringParenthesis.generatePreOrderStringParenthesization(this.complexBST.getRoot());
         assertEquals(expectedComplexResult, complexBSTStrRep);
     }
 }

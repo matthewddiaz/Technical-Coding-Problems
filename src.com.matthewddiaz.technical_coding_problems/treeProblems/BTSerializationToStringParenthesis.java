@@ -5,7 +5,7 @@ import com.matthewddiaz.datastructures.trees.BinaryTree;
 /**
  * Created by matthewdiaz on 6/29/17.
  */
-public class GenerateBTStringParenthesis {
+public class BTSerializationToStringParenthesis {
 
     /**
      * Generates a String representation of the binary tree in pre-order traversal
