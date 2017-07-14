@@ -1,6 +1,6 @@
 package treeProblems;
 
-import com.matthewddiaz.datastructures.trees.BinarySearchTree;
+import com.matthewddiaz.datastructures.trees.BinaryTree;
 
 /**
  * Created by matthewdiaz on 7/4/17.
@@ -15,7 +15,7 @@ public class CheckForBinaryTreeBalance {
      * @param root
      * @return
      */
-    public static boolean isBinaryTreeBalance(BinarySearchTree.Node root){
+    public static boolean isBinaryTreeBalance(BinaryTree.Node root){
         //if checkNodeHeight returns -1 then there exists at least one node in the binary tree that is not balanced.
         if(checkNodeHeight(root) == -1){
             return false;
@@ -32,19 +32,19 @@ public class CheckForBinaryTreeBalance {
      * @param node
      * @return
      */
-    public static int checkNodeHeight(BinarySearchTree.Node node){
+    public static int checkNodeHeight(BinaryTree.Node node){
         //a null node has a height of 0
         if(node == null){
             return 0;
         }
 
-        int leftHeight = checkNodeHeight(node.getLeft());
+        int leftHeight = checkNodeHeight(node.getLeftChild());
         //case where left subtree is not balanced
         if(leftHeight == -1){
             return -1;
         }
 
-        int rightHeight = checkNodeHeight(node.getRight());
+        int rightHeight = checkNodeHeight(node.getRightChild());
         //case where right subtree is not balanced
         if(rightHeight == -1){
             return  -1;
