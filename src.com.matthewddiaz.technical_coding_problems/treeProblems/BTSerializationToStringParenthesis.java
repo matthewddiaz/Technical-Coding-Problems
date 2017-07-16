@@ -10,7 +10,7 @@ public class BTSerializationToStringParenthesis {
     /**
      * Generates a String representation of the binary tree in pre-order traversal
      * @param root The root node of the input binary tree
-     * @return returns a string in the following format "(node_val(left_subtree)(right_subtree))"
+     * @return returns a string in the following format "(nodeValue(leftSubtree)(rightSubtree))"
      */
     public static String generatePreOrderStringParenthesization(BinaryTree.Node root){
         StringBuffer strTree = generatePreOrderStringParenthesization(root, new StringBuffer("("));

@@ -21,6 +21,7 @@ class SerializeBinaryTreeTest {
 
     @Test
     void serializeBinaryTree() {
+        //serializing in-preOrder. NOTE: "#' represent null nodes
         String expectedSerializedBT = "{10,5,1,#,#,#,12,11,#,#,15,#,#}";
         String serializedBT = SerializeBinaryTree.serializeBinaryTree(this.simpleBST.getRoot());
         assertEquals(expectedSerializedBT, serializedBT);
