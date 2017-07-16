@@ -12,8 +12,9 @@ public class DeserializeStringParenthesisToBT {
 
     /**
      *
-     * @param btStr
-     * @return
+     * @param btStr input String with the format (self(leftSubtree)(rightSubtree))
+     * @return The root node of the binary tree serialized in btStr
+     * NOTE: null is returned if btStr format is not valid
      */
     public static BinaryTree.Node DeserializeStringParenthesis(String btStr){
         //check if btStr is null or empty
@@ -35,22 +36,27 @@ public class DeserializeStringParenthesisToBT {
 
     /**
      *
-     * @param btStr
-     * @return
+     * @param btStr formatted parenthesis string
+     * @return a queue containing all of the tokens of the binary tree
      */
     public static Deque<String> tokenizeStringParenthesis(String btStr){
         Deque<String> tokenQueue = new ArrayDeque<>();
+
         int lengthOfToken = 0;
         for(int index = 0; index < btStr.length(); index++){
             char currentChar = btStr.charAt(index);
+            //if currentChar is a digit increment length of token. Needed for tokens that are more than 1 digit long
             if(Character.isDigit(currentChar)){
                 lengthOfToken++;
             }else{
+                //if the current character is not a digit and the length of token is greater than 0 add it to queue
                 if(lengthOfToken > 0){
                     insertTokenToQueue(tokenQueue, btStr, index - lengthOfToken, index);
-                }else if((index >= 1) && ((btStr.charAt(index - 1) == '(') && (currentChar == ')'))){
+                }//if previous and current character equal to "()" add this token to queue. Its represents a null node
+                else if((index >= 1) && ((btStr.charAt(index - 1) == '(') && (currentChar == ')'))){
                     insertTokenToQueue(tokenQueue, btStr, index - 1, index + 1);
                 }
+                //reset length of token back to 0
                 lengthOfToken = 0;
             }
         }
@@ -64,10 +70,10 @@ public class DeserializeStringParenthesisToBT {
 
     /**
      *
-     * @param tokenQueue
-     * @param btStr
-     * @param startIndex
-     * @param endIndex
+     * @param tokenQueue queue that contains tokens
+     * @param btStr parenthesis formatted binary tree string
+     * @param startIndex index at which substring starts
+     * @param endIndex index at which substring ends
      */
     private static void insertTokenToQueue(Deque<String> tokenQueue, String btStr, int startIndex, int endIndex){
         String token = btStr.substring(startIndex, endIndex);

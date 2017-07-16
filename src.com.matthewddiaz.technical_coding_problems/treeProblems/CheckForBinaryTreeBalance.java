@@ -32,7 +32,7 @@ public class CheckForBinaryTreeBalance {
      * @param node
      * @return
      */
-    public static int checkNodeHeight(BinaryTree.Node node){
+    private static int checkNodeHeight(BinaryTree.Node node){
         //a null node has a height of 0
         if(node == null){
             return 0;
