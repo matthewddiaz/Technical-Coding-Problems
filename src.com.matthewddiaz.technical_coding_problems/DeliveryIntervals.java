@@ -64,10 +64,6 @@ public class DeliveryIntervals {
         }
     }
 
-//    boolean busyHolidays(String[][] shoppers, String[][] orders, int[] leadTime) {
-//
-//    }
-
     private List<Interval> transformToIntervalList(String[][] arr){
         List<Interval> list = new ArrayList<>();
 
