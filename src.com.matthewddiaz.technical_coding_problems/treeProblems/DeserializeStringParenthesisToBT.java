@@ -2,6 +2,7 @@ package treeProblems;
 
 import com.matthewddiaz.datastructures.trees.BinaryTree;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
@@ -16,15 +17,15 @@ public class DeserializeStringParenthesisToBT {
      * @return The root node of the binary tree serialized in btStr
      * NOTE: null is returned if btStr format is not valid
      */
-    public static BinaryTree.Node DeserializeStringParenthesis(String btStr){
+    public static BinaryTree.Node DeserializeStringParenthesis(String btStr) throws Exception{
         //check if btStr is null or empty
         if(btStr == null || btStr.length() == 0){
-            return null;
+            throw new Exception();
         }
 
         //check if btStr is valid parenthesis
         if(!CheckBTStringParenthesisValidity.checkBinaryTreeParenthesisCorrectness(btStr)){
-            return null;
+            throw new InvalidParameterException();
         }
 
         //generate queue that contains parsed tokens representing every node in BT

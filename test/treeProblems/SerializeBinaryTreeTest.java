@@ -1,6 +1,6 @@
 package treeProblems;
 
-import com.matthewddiaz.datastructures.trees.BSTCreator;
+import com.matthewddiaz.datastructures.trees.BinaryTreeCreator;
 import com.matthewddiaz.datastructures.trees.BinaryTree;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,7 @@ class SerializeBinaryTreeTest {
 
     @BeforeEach
     public void setUp() throws Exception {
-        this.simpleBST = BSTCreator.createSimpleBinarySearchTree();
+        this.simpleBST = BinaryTreeCreator.createSimpleBinarySearchTree();
     }
 
 

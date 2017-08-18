@@ -1,6 +1,6 @@
 package treeProblems;
 
-import com.matthewddiaz.datastructures.trees.BSTCreator;
+import com.matthewddiaz.datastructures.trees.BinaryTreeCreator;
 import com.matthewddiaz.datastructures.trees.BinaryTree;
 import org.junit.jupiter.api.Test;
 
@@ -10,8 +10,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * Created by matthewdiaz on 7/16/17.
  */
 class CheckForBinaryTreeBalanceTest {
-    BinaryTree<Integer> simpleBT = BSTCreator.createSimpleBinarySearchTree();
-    BinaryTree<Integer> comlexBt = BSTCreator.createComplexBinarySearchTree();
+    BinaryTree<Integer> simpleBT = BinaryTreeCreator.createSimpleBinarySearchTree();
+    BinaryTree<Integer> comlexBt = BinaryTreeCreator.createComplexBinarySearchTree();
 
     @Test
     void isSimpleBinaryTreeBalanced() {

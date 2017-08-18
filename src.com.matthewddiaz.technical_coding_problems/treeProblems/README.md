@@ -7,7 +7,7 @@
 **Problem:** Given a **String** check if it is a valid serialized binary tree in pre-order representation with the 
 format **(self(leftSubTree)(rightSubTree))**
 
-**Test Class:** [CircularArrayRotationTest](https://github.com/matthewddiaz/Technical-Coding-Problems/blob/master/test/treeProblems/CheckBTStringParenthesisValidityTest.java)
+**Test Class:** [CheckBTStringParenthesisValidityTest](https://github.com/matthewddiaz/Technical-Coding-Problems/blob/master/test/treeProblems/CheckBTStringParenthesisValidityTest.java)
 
 
 

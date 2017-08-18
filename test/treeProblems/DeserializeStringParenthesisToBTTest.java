@@ -15,17 +15,17 @@ class DeserializeStringParenthesisToBTTest {
     private String complexBTStr = "(0(5(6()())(4()(9()())))(7(1()())(3()())))";
 
     @Test
-    void deserializeStringParenthesisSimpleBT() {
+    void deserializeStringParenthesisSimpleBT() throws Exception {
         String expectedLevelOrderResult = "[ 10 ]";
         checkDeserializeStringParenthesis(simpleBTStr, expectedLevelOrderResult);
     }
 
     @Test
-    void deserializeStringParenthesisComplexBT() {
+    void deserializeStringParenthesisComplexBT() throws Exception {
         checkDeserializeStringParenthesis(complexBTStr, "[ 0, 5, 7, 6, 4, 1, 3, 9 ]");
     }
 
-    private void checkDeserializeStringParenthesis(String btParenthesisStr, String expectedLevelOrderResult){
+    private void checkDeserializeStringParenthesis(String btParenthesisStr, String expectedLevelOrderResult) throws Exception {
         BinaryTree.Node root = DeserializeStringParenthesisToBT.DeserializeStringParenthesis(btParenthesisStr);
         String levelOrderTraversalStr = BinaryTree.levelOrderTraversal(root);
         assertEquals(expectedLevelOrderResult, levelOrderTraversalStr);
