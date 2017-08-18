@@ -1,74 +1,87 @@
 package arrayProblems;
 
+import java.util.Arrays;
+
 /**
  * Created by matthewdiaz on 7/4/17.
+ *
+ * Sorts the input array in non-descending order based on each digit's digit sum.
+ * If two digits have the same sum; the digit with the lower original index position
+ * is placed first.
  */
 public class ArrayDigitSort {
-    int[] digitRootSort(int[] a) {
-        int[] aux = new int[a.length];
-        digitRootSort(a, aux, 0, a.length - 1);
-        return a;
-    }
 
-    private void digitRootSort(int[] a, int[] aux, int start, int end){
-        if(start < end){
-            //find middle index
-            int mid = (start + end)/2;
-            digitRootSort(a, aux, start, mid);
-            digitRootSort(a, aux, mid + 1, end);
-            digitRootMergeSort(a, aux, start, end);
-        }
-    }
+    /**
+     * Wrapper class that contains the numerical value's digitSum and original position in the input array.
+     */
+    public static class DigitInfo implements Comparable<DigitInfo>{
+        int numericValue;
+        int digitSum;
+        int originalPosition;
 
-
-    private void digitRootMergeSort(int[] a, int[] aux, int start, int end){
-        //copying elements to aux
-        for(int i = start; i <= end; i++){
-            aux[i] = a[i];
+        public DigitInfo(int value, int position){
+            this.numericValue = value;
+            this.originalPosition = position;
+            this.digitSum = digitSum(this.numericValue);
         }
 
-        int mid = (start + end)/2;
-        //the two comparison points are start and mid
+        //returns sum of digit
+        private int digitSum(int num){
+            int sum = 0;
+            while(num > 0){
+                sum += num % 10;
+                num /= 10;
+            }
+            return sum;
+        }
 
-        int leftIndex = start;
-        int rightIndex = mid + 1;
-
-        for (int index = start; index <= end; index++){
-            //case were leftIndex is greater than mid
-            if(leftIndex > mid){
-                a[index] = aux[rightIndex++];
-            }else if(rightIndex > end){
-                a[index] = aux[leftIndex++];
-            }//case where left digit-sum is less than or equal to right
-            else{
-                int leftDigitSum = digitSum(a[leftIndex]);
-                int rightDigitSum = digitSum(a[rightIndex]);
-                if(leftDigitSum < rightDigitSum){
-                    a[index] = aux[leftIndex++];
-                }else if(leftDigitSum == rightDigitSum &&
-                        a[leftIndex] < a[rightIndex]){
-                    a[index] = aux[leftIndex++];
-                }else{
-                    a[index] = aux[rightIndex++];
-                }
-
+        @Override
+        public int compareTo(DigitInfo other) {
+            //if this element's digitSum is greater than the other's digitSum
+            //or the two elements are equal but this element's originalPosition is greater then return 1.
+            if(this.digitSum > other.digitSum ||
+                    ((this.digitSum == other.digitSum) && (this.originalPosition > other.originalPosition))){
+                return 1;
+            }else if(this.digitSum < other.digitSum){
+                return -1;
+            }else{
+                return 0;
             }
         }
     }
 
-    //returns sum of digit
-    private int digitSum(int num){
-        int sum = 0;
-        while(num > 0){
-            sum += num % 10;
-            num /= 10;
+    /**
+     * @param inputArray input array that is sorted based on digit sum values
+     */
+    public static void digitSort(int[] inputArray){
+        DigitInfo[] digitInfoArray = convertToDigitInfoArray(inputArray);
+        Arrays.sort(digitInfoArray);
+        deserializeDigitInfoArray(digitInfoArray, inputArray);
+    }
+
+    /**
+     * Converts the input integer array into a digitInfo wrapper array.
+     * @param inputArray integer array
+     * @return DigitInfo array
+     */
+    private static DigitInfo[] convertToDigitInfoArray(int[] inputArray){
+        DigitInfo[] digitInfoArray = new DigitInfo[inputArray.length];
+
+        for(int index = 0; index < inputArray.length; index++){
+            int value = inputArray[index];
+            digitInfoArray[index] = new DigitInfo(value, index);
         }
-        return sum;
+        return digitInfoArray;
     }
 
-    //returns max value between two digits
-    private int max(int val1, int val2){
-        return (val1 >= val2) ? val1 : val2;
+    /**
+     * populates the inputArray with the numerical values of digitInfoArray in digitSum sorted order.
+     * @param digitInfoArray DigitInfo array
+     * @param inputArray integer array
+     */
+    private static void deserializeDigitInfoArray(DigitInfo[] digitInfoArray, int[] inputArray){
+        for(int index = 0; index < digitInfoArray.length; index++){
+            inputArray[index] = digitInfoArray[index].numericValue;
+        }
     }
-
 }

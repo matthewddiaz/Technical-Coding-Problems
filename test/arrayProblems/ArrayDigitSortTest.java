@@ -4,21 +4,31 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Created by matthewdiaz on 7/4/17.
  */
 class ArrayDigitSortTest {
-    private ArrayDigitSort sort = new ArrayDigitSort();
+
     @Test
-    void digitRootSort() {
-        int[] a = {100, 22, 4, 11, 31, 103};
-        int[] b = {13, 20, 7, 4};
-        sort.digitRootSort(b);
-        System.out.println(Arrays.toString(b));
-        sort.digitRootSort(a);
-        System.out.println(Arrays.toString(a));
+    void digitSortSimpleTest() {
+        int[] simpleArr = {13, 20, 7, 4};
+        String expectedArrStr = "[20, 13, 4, 7]";
+        testDigitSort(simpleArr, expectedArrStr);
     }
 
+    @Test
+    void digitSortComplexTest() {
+        int[] complexArr = {100, 22, 4, 11, 31, 103};
+        String expectedArrStr = "[100, 11, 22, 4, 31, 103]";
+
+        testDigitSort(complexArr, expectedArrStr);
+    }
+
+    private void testDigitSort(int[] inputArr, String expectedSortedArrStr){
+        ArrayDigitSort.digitSort(inputArr);
+        String resultStr = Arrays.toString(inputArr);
+        assertEquals(expectedSortedArrStr, resultStr);
+    }
 }
